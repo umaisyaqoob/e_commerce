@@ -39,7 +39,8 @@
             </ul>
             <form class="d-flex" role="search">
               <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-success" type="submit">Search</button>
+              <a href="{% url 'signup_form' %}" class="btn btn-outline-success me-2">Search</a>
+              <a href="{% url 'user_logout' %}" class="btn btn-success me-2">Logout</a>
             </form>
           </div>
         </div>

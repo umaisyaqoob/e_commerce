@@ -21,5 +21,9 @@ from E_Commerce import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index, name='index'),
-    path('signup-form/', views.signup_form, name='signup_form')
+    path('signup-form/', views.signup_form, name='signup_form'),
+    path('user_signup/', views.user_signup, name='user_signup'),
+    path('login-form/', views.login_form, name='login_form'),
+    path('user_login/', views.user_login, name='user_login'),
+    path('user_logout/', views.user_logout, name='user_logout')
 ]

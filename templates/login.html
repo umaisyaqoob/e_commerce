@@ -40,22 +40,20 @@
     <div class="container-custom">
         <div class="row d-flex flex-column">
             <div class="col-sm-5 mx-auto bg-warning mt-4 text-center p-3 rounded-top">
-                <h4 class="custom-text-bold"><i class="fa-solid fa-user"></i> Create an account</h4>
+                <h4 class="custom-text-bold">Login</h4>
+                {% if error %}<h6>{{error}}</h6>{% else %} {% endif %}
             </div>
-            <div class="col-sm-5 mx-auto bg-warning-subtle mt-0 text-center p-2 rounded-bottom text-success  border border-warning">
-                <form action="{% url 'user_signup' %}" method="post">
+            <div class="col-sm-5 mx-auto bg-warning-subtle mt-0 text-center p-2 rounded-bottom text-success border border-warning">
+                <form action="{% url 'user_login' %}" method="post">
                     {% csrf_token %}
                     <div class="input m-4">
-                        <input type="text" name="username" class="form-control" placeholder="*username">
+                        <input type="text" name="username" class="form-control" placeholder="*email">
                     </div>
                     <div class="input m-4">
-                        <input type="email" name="email" class="form-control" placeholder="*email">
-                    </div>
-                    <div class="input m-4">
-                        <input type="password" name="password" class="form-control" placeholder="*password">
+                        <input type="text" name="password" class="form-control" placeholder="*password">
                     </div>
                     <div class="input m-3">
-                        <input type="submit" value="Register" class="form-control btn btn-warning text-success">
+                        <input type="submit" value="Login" class="form-control btn btn-warning text-success">
                     </div>
                 </form>
             </div>
