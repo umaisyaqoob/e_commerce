@@ -1,0 +1,76 @@
+/* PREFIX */
+:root{
+    --prefix: html;
+    --linear: linear-gradient(rgba(25, 27, 36, 0.6), rgba(0, 27, 36, 0.6));
+    --shadow: 0 0px 8px rgba(0, 0, 0, 0.719);
+    --shadow-hover: 0 0px 8px rgb(0, 0, 0);
+    --orange: rgba(233, 141, 20, 0.973);
+}
+
+*{
+    font-family: "Baloo 2", sans-serif;
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+
+.container-custom{
+    width: 90%;
+    margin: auto;
+}
+
+/* PREFIX */
+
+
+
+/* section-10-cookies start */
+.section-10-cookies-main {
+    background: linear-gradient(rgba(25, 27, 36, 0.6), rgba(25, 27, 36, 0.6)) fixed center center;
+    position: -webkit-sticky;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 26px;
+    padding: 25px 0px;
+    padding-bottom: 25px;
+    align-items: center;
+}
+.section-10-cookies-title{
+    font-size: 16px;
+}
+.section-10-cookies-btn{
+    background-color: var(--orange);
+    padding: 3px 10px;
+    color: #eee;
+    padding-bottom: 0.3rem !important;
+}
+.section-10-cookies-btn a{
+    background-color: var(--orange);
+    color: #eee;
+    text-decoration: none;
+    font-size: 13px;
+
+}
+
+/* section-10-cookies end */
+
+
+
+/* BREAK POINTS */
+
+
+@media (max-width:550px){
+
+
+/* section10-cookies */
+.section-10-cookies-title{
+    font-size: 10px;
+}
+/* section10-cookies */
+
+
+}
+
+
+/* BREAK POINTS */
