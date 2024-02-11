@@ -1,4 +1,5 @@
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
+from django.core.serializers import serialize
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
@@ -162,3 +163,25 @@ def orders(request):
         "categories": categories
     }
     return render(request, 'orders.html', context)
+
+
+
+
+
+def products_api(request):
+    if request.method == 'GET':
+        products = Product.objects.all()
+        # Extract only the desired fields from each product
+        product_data = [{'id': product.id, "name":product.name, "description": product.description, "price":product.price} for product in products]
+        # Return JSON response
+        return JsonResponse(product_data, safe=False, status=200)
+    
+def orders_api(request):
+    customer = request.session.get("customer")
+    print(customer)
+    orders_data = Order.objects.filter(customer=customer).order_by("-date")
+    orders = serialize('json', orders_data)
+    context = {
+        "orders": orders,
+    }
+    return JsonResponse(context, safe=False, status=200,content_type='application/json')
