@@ -184,4 +184,4 @@ def orders_api(request):
     context = {
         "orders": orders,
     }
-    return JsonResponse(context, safe=False, status=200,content_type='application/json')
+    return JsonResponse(context, safe=False, status=200 , content_type='application/json')
