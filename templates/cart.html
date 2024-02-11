@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+
+{% block cart %}
+{% load cart_filter %}
+
+
+
+<div style="height: 90vh; overflow-y: scroll;">
+    <div class="container-custom">
+        <di class="row">
+            <div class="col-sm-12 mx-auto bg-warning mt-3 pt-3 p-2 float-start rounded-top"><h3 class="custom-text-bold ms-4">Your Cart</h3></div>
+            <div class="col-sm-12 mx-auto bg-warning-subtle mt-0 text-center p-2 rounded-bottom text-success border border-warning">
+                <table class="table table-hover table-striped table-responsive">
+                    <thead>
+                        <tr>
+                            <th>Sr#</th>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>Price</th>
+                            <th>image</th>
+                            <th>Quantity</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for product in products %}
+                <tr>
+                    <td>{{forloop.counter}}</td>
+                    <td>{{product.name}}</td>
+                    <td>{{product.description}}</td>
+                    <td>{{product.price|currency}}</td>
+                    <td><img src="/media/{{product.image}}" alt="" width="50px"></td>
+                    <td>{{product|cart_count:request.session.cart}}</td>
+                    <td>{{product|price_total:request.session.cart|currency}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th colspan="5" class="text-end m-5"><h2 class="custom-text-bold">Total</h2></th>
+                    <th colspan="2" class="text-end">{{products|total_cart_price:request.session.cart|currency}}</th>
+                    
+                </tr>
+            </tfoot>
+                </table>
+<hr class="text-black">
+                <div class="">
+                    <!-- DELETE SECTION START -->
+            
+          <div>
+                  
+            
+                    <!-- Button to Open Modal -->
+      <button type="button" class="btn btn-warning col-lg-2 me-2 float-end" data-bs-toggle="modal" data-bs-target="#myModalForDelete-{{forloop.counter}}">Checkout</button>
+
+      <!-- The Modal -->
+        <div class="modal fade" id="myModalForDelete-{{forloop.counter}}">
+          <div class="modal-dialog modal-md"> <!-- modal-lg ya modal-xl ka istemal karein -->
+            <div class="modal-content">
+        
+              <!-- Modal Header -->
+              <div class="modal-header bg-warning text-black">
+                <h4 class="modal-title">Check Out Form</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+              </div>
+        
+              <!-- Modal Body -->
+              <div class="modal-body">
+                
+                <form action="{% url 'checkout' %}" method="post">
+                    {% csrf_token %}
+                    <div class="input m-4">
+                        <input type="text" value="{{product.name}}" name="address" class="form-control" placeholder="*Address">
+                    </div>
+                    <div class="input m-4">
+                        <input type="text"  value="{{product.description}}" name="phone" class="form-control" placeholder="*Phone">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-success">Confirm</button>
+                    </div>
+                </form>
+                 
+              
+              
+              </div>
+      
+        
+            </div>
+          </div>
+        </div>
+    </div>
+      <!-- DELETE SECTION END-->
+                </div>
+
+            </div>
+        </di>
+    </div>
+    </div>
+{% endblock %}

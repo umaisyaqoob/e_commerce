@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block orders %}
+{% load cart_filter %}
+
+
+
+<div style="height: 90vh; overflow-y: scroll;">
+    <div class="container-custom">
+        <di class="row">
+            <div class="col-sm-12 mx-auto bg-warning mt-3 pt-3 p-2 float-start rounded-top"><h3 class="custom-text-bold ms-4">Your Orders</h3></div>
+            <div class="col-sm-12 mx-auto bg-warning-subtle mt-0 text-center p-2 rounded-bottom text-success border border-warning">
+                <table class="table table-hover table-striped table-responsive">
+                    <thead>
+                        <tr>
+                            <th>Sr#</th>
+                            <th>Name</th>
+                            <th>image</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Total</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for order in orders %}
+                <tr>
+                    <td>{{forloop.counter}}</td>
+                    <td>{{order.product.name}}</td>
+                    <td><img src="/media/{{order.product.image}}" alt="" width="40px"></td>
+                    <td>{{order.price|currency}}</td>
+                    <td>{{order.quantity}}</td>
+                    <td>{{order.quantity|multiply:order.price}}</td>
+                    <td>{% if order.status == True %} <span class="badge text-bg-success"> <small>Completed</small></span>{% else %} <span class="badge text-bg-warning"><small>pending</small></span> {% endif %}</td>
+                    
+                </tr>
+                {% endfor %}
+            </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    </div>
+{% endblock %}

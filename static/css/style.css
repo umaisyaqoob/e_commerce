@@ -39,7 +39,10 @@
     padding-bottom: 25px;
     align-items: center;
 }
-.section-10-cookies-title{
+.section-10-cookies-main:hover{
+    display: none;
+}
+.section-10-cookies-title:hover{
     font-size: 16px;
 }
 .section-10-cookies-btn{
@@ -55,6 +58,7 @@
     font-size: 13px;
 
 }
+
 
 /* section-10-cookies end */
 

@@ -15,32 +15,42 @@
 
     <nav class="navbar navbar-expand-lg bg-warning">
         <div class="container-fluid container-custom">
-            <span class="fs-1 me-3 font-weight-bold"><i class="fa-solid fa-cart-shopping"></i></span>
-          <a class="navbar-brand" href="#">ONLINE SHOP</a>
+          <div type="button" class="bg-warning  position-relative">
+            <a href="{% url 'view_cart' %}" class="text-black"><span class="fs-1 me-2"><i class="fa-solid fa-cart-shopping"></i></span></a>
+
+            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-success mt-2">
+              {{request.session.cart.keys|length}}
+            </span>
+          </div>
+          <a class="navbar-brand custom-text-bold" href="{% url 'index' %}">ONLINE SHOP</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarScroll">
             <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
-              </li>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   Categories
                 </a>
                 <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#">Action</a></li>
-                  <li><a class="dropdown-item" href="#">Another action</a></li>
-                  <li><hr class="dropdown-divider"></li>
-                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                  <li><a class="dropdown-item bg-warning" href="/">All</a></li>
+                  {% for category in categories %}
+                  <li><a class="dropdown-item" href="/?category={{category.id}}">{{category.name}}</a></li>
+                  {% endfor %}
                 </ul>
               </li>
             </ul>
-            <form class="d-flex" role="search">
-              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-              <a href="{% url 'signup_form' %}" class="btn btn-outline-success me-2">Search</a>
+            <form method="get" class="d-flex" role="search">
+              <input class="form-control me-2" type="text" name="searchproduct" placeholder="Search" aria-label="Search">
+              <input type="submit" class="btn btn-outline-success me-2" value="Search">
+              {% if user.is_authenticated and user.is_superuser and request.path == '/admin-panel/' %}
+              <a href="{% url 'index' %}" class="btn btn-success me-2">Site</a>
+              {% elif user.is_authenticated and user.is_superuser %}
+              <a href="{% url 'admin_panel' %}" class="btn btn-success me-2">Admin</a>
+              {% endif %}
+              <a href="{% url 'orders' %}" class="btn btn-success me-2">Orders</a>
               <a href="{% url 'user_logout' %}" class="btn btn-success me-2">Logout</a>
+          
             </form>
           </div>
         </div>
