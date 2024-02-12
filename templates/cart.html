@@ -43,17 +43,17 @@
                 </tr>
             </tfoot>
                 </table>
-<hr class="text-black">
-                <div class="">
-                    <!-- DELETE SECTION START -->
-            
-          <div>
-                  
-            
-                    <!-- Button to Open Modal -->
-      <button type="button" class="btn btn-warning col-lg-2 me-2 float-end" data-bs-toggle="modal" data-bs-target="#myModalForDelete-{{forloop.counter}}">Checkout</button>
 
-      <!-- The Modal -->
+        <hr class="text-black">
+                
+            
+                    <!-- DELETE SECTION START -->
+        <div>
+          <div>
+            <!-- Button to Open Modal -->
+                <button type="button" class="btn btn-warning col-lg-2 me-2 float-end" data-bs-toggle="modal" data-bs-target="#myModalForDelete-{{forloop.counter}}">Checkout</button>
+
+            <!-- The Modal -->
         <div class="modal fade" id="myModalForDelete-{{forloop.counter}}">
           <div class="modal-dialog modal-md"> <!-- modal-lg ya modal-xl ka istemal karein -->
             <div class="modal-content">
@@ -79,21 +79,16 @@
                         <button type="submit" class="btn btn-success">Confirm</button>
                     </div>
                 </form>
-                 
-              
-              
-              </div>
-      
-        
             </div>
-          </div>
         </div>
     </div>
-      <!-- DELETE SECTION END-->
-                </div>
+</div>
+</div>
+</div>
+ <!-- DELETE SECTION END-->
 
             </div>
-        </di>
+        </div>
     </div>
     </div>
 {% endblock %}

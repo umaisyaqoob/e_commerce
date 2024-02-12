@@ -57,7 +57,7 @@ def index(request):
         category_id = request.GET.get('category')
         search_product = request.GET.get('searchproduct')
         if search_product != None:
-            products = Product.objects.filter(description__icontains = search_product)
+            products = Product.objects.filter(name__icontains = search_product)
         if category_id:
             products = Product.objects.filter(category_id = category_id)
     context ={'products': products, "categories": categories}
@@ -71,7 +71,7 @@ def admin_panel(request):
         category_id = request.GET.get('category')
         search_product = request.GET.get('searchproduct')
         if search_product != None:
-            products = Product.objects.filter(description__icontains = search_product)
+            products = Product.objects.filter(name__icontains = search_product)
         if category_id:
             products = Product.objects.filter(category_id = category_id)
     context ={'products': products, "categories": categories}

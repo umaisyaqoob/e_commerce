@@ -4,9 +4,9 @@
 {% load cart_filter %}
 <div  style="height: 90vh;overflow-y: scroll;">
 <div class="container-custom">
-    <div class="d-flex justify-content-between flex-wrap">
+    <div class="d-flex flex-wrap">
         {% for product in products %}
-        <div class="card mt-3 rounded border border-warning" id="{{product.id}}" style="width: 18rem;">
+        <div class="card mt-3 rounded border border-warning" id="{{product.id}}" style="width: 18rem;margin-left: 17px;">
             <img src="/media/{{product.image}}" class="card-img-top" alt="..." height="250px">
             <div class="card-body">
               <h5 class="card-title">{{product.name}}</h5>
